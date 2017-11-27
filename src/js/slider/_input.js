@@ -9,7 +9,6 @@ export default class Input {
     this.inputs=[].slice.call(document.querySelectorAll(selector));
     this._bindEvents();
 
-    
   }
 
 
@@ -78,15 +77,12 @@ export default class Input {
 
     return false;
 
-
   }
-
 
   _setRangeValue(value) {
 
     const handlesSliders = [].slice.call(document.querySelectorAll(this.config.sliderSelector));
     // let self = this;
-  
 
     handlesSliders.forEach(element => {
 
