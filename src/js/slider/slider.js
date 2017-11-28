@@ -5,7 +5,7 @@ import Range from './_range';
 
 
 
-export default class App {
+export default class Slider {
 
   constructor(settings) {
     this.config=settings;
