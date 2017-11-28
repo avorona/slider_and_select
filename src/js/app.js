@@ -7,8 +7,9 @@ let app = new App({
 
   min: 0,
   max: 100,
-  start: 40,
+  start: 30,
   sliderSelector: '.js-range-slider',
-  inputSelector: '.js-rs-change'
+  inputSelector: '.js-rs-change',
+  customRange: '.js-ruller'
   
 });

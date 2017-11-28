@@ -66,6 +66,7 @@
     "lodash": "^4.3.0"
   },
   "dependencies": {
-    "nouislider": "^10.1.0"
+    "nouislider": "^10.1.0",
+    "rangeslider.js": "^2.3.1"
   }
 }

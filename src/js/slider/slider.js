@@ -1,5 +1,8 @@
 import nouiSlider from 'nouislider';
 import Input from './_input';
+import Range from './_range';
+
+
 
 
 export default class App {
@@ -7,9 +10,11 @@ export default class App {
   constructor(settings) {
     this.config=settings;
     this.input;
+    this.range;
     this.slider;
     
     this._initInput();
+    this._initRange();
     this._initSlider();
    
 
@@ -28,17 +33,26 @@ export default class App {
 
   }
 
+  _initRange() {
+
+    let self = this;
+
+    self.range=new Range(self.config);
+    // console.log(self.range);
+  
+  }
+
 
   _initSlider() {
 
     const handlesSliders = [].slice.call(document.querySelectorAll(this.config.sliderSelector));
+    const slideHandlerCustom = [].slice.call(document.querySelectorAll('.js-slide-handle'));
     let self=this;
 
     handlesSliders.forEach(element => {
 
       nouiSlider.create(element, {
         start: self.config.start,
-        connect: [true, false],
         range: {
           'min': self.config.min,
           'max': self.config.max
@@ -52,6 +66,7 @@ export default class App {
 
         self.input.setVal(values[handle]);
 
+        self.range.setProgress(values[handle]);
       });
 
     });
