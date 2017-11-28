@@ -10,6 +10,6 @@ let app = new App({
   start: 30,
   sliderSelector: '.js-range-slider',
   inputSelector: '.js-rs-change',
-  customRange: '.js-ruller'
-  
+  customRange: '.js-ruller',
+  handlerImg: 'slider.svg'
 });

@@ -20,6 +20,7 @@ export default class Range {
   }
 
 
+
   setProgress(value) {
 
     let ruller= document.querySelector(this.config.customRange);
@@ -29,13 +30,13 @@ export default class Range {
     // console.log(value, ruller, rullerStrokes);
 
     let position = Math.floor(l/(this.config.max - this.config.min)*value);
-
+    if (position >= rullerStrokes.length) { position=rullerStrokes.length-1;}
 
     // console.log(position);
 
     let current = rullerStrokes[position];
-
-    current.style.fill ='#FF6F2B';
+   
+    current.style.fill ='#C55C4B';
 
     this._fillPrevSiblings(current);
 
@@ -52,7 +53,7 @@ export default class Range {
 
     siblings.forEach(e => {
       // console.log(e);
-      e.style.fill = '#FF6F2B';
+      e.style.fill = '#C55C4B';
 
     });
    
@@ -68,7 +69,7 @@ export default class Range {
     
 
     siblings.forEach(e => {
-      e.style.fill ='#E3E3E3';
+      e.style.fill ='#FFFFFF';
     });
   
 

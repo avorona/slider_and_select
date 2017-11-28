@@ -14,9 +14,13 @@ export default class Input {
 
   setVal(value) {
   
-    this.value = value;
+    this.value = Math.floor(+value);
+
+    // console.log(this.value);
     this.inputs.forEach(el => { 
-      el.value=value;
+
+      el.value = this.value;
+
     });
 
   }  
@@ -35,27 +39,27 @@ export default class Input {
 
         let val = input.value;
 
-        if (self._validateData(input)) {
+        // if (self._validateData(input)) {
 
-          console.log('validato');
-          console.log(val);
-          el.closest('.slider__input').classList.remove('is-invalid');
+        //   console.log('validato');
+        //   console.log(val);
+        el.closest('.slider__input').classList.remove('is-invalid');
 
-          self._setRangeValue(val);
+        self._setRangeValue(val);
 
-        } else {
-          console.log(val);
-          el.closest('.slider__input').classList.add('is-invalid');
-          input.value = '';
+        // } else {
+        //   // console.log(val);
+        //   el.closest('.slider__input').classList.add('is-invalid');
+        //   input.value = '';
 
-          self._setRangeValue(0);
+        //   self._setRangeValue(0);
 
-          setTimeout(() => {
-            el.closest('.slider__input').classList.remove('is-invalid');
-          }, 800);
+        //   setTimeout(() => {
+        //     el.closest('.slider__input').classList.remove('is-invalid');
+        //   }, 800);
 
 
-        }
+        // }
 
       });
 
@@ -73,9 +77,10 @@ export default class Input {
     let val = input.value;
     let self=this;
 
-    if ((regexp.test(val) && (val.length <= self.config.max)) || (val.length === 0)) { return true; }
+    return true;
+    // if ((regexp.test(val) && (val.length <= self.config.max)) || (val.length === 0)) { return true; }
 
-    return false;
+    // return false;
 
   }
 
