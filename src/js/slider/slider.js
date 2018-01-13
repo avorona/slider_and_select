@@ -3,32 +3,26 @@ import Input from './_input';
 import Range from './_range';
 
 
-
-
 export default class Slider {
 
   constructor(settings) {
-    this.config=settings;
+    this.config = settings;
     this.input;
     this.range;
     this.slider;
-    
     this._initInput();
     this._initRange();
     this._initSlider();
-   
 
   }
 
   _initInput() {
 
-    let self=this;
-   
-    self.input = new Input(self.config.inputSelector,{
+    let self = this;
 
+    self.input = new Input(self.config.inputSelector, {
       slider: self.sliderSelector,
       config: self.config
-
     });
 
   }
@@ -36,21 +30,17 @@ export default class Slider {
   _initRange() {
 
     let self = this;
+    self.range = new Range(self.config);
 
-    self.range=new Range(self.config);
-    // console.log(self.range);
-  
   }
 
 
   _initSlider() {
 
     const handlesSliders = [].slice.call(document.querySelectorAll(this.config.sliderSelector));
-    const slideHandlerCustom = [].slice.call(document.querySelectorAll('.js-slide-handle'));
-    let self=this;
+    let self = this;
 
     handlesSliders.forEach(element => {
-
       nouiSlider.create(element, {
         start: self.config.start,
         range: {
@@ -61,11 +51,8 @@ export default class Slider {
 
       self.input.setVal(self.config.start);
 
-
       element.noUiSlider.on('update', function(values, handle) {
-
         self.input.setVal(values[handle]);
-
         self.range.setProgress(values[handle]);
       });
 
@@ -74,10 +61,4 @@ export default class Slider {
   }
 
 
-
 }
-
-
-
-
-

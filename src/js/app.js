@@ -1,9 +1,9 @@
 import Slider from './slider/slider';
 import Select from './select/select';
+import './helpers';
 
 
-
-let slider = new Slider ({
+let slider = new Slider({
 
   min: 0,
   max: 255,
@@ -15,7 +15,7 @@ let slider = new Slider ({
 });
 
 
-let select = new Select ( '.js-select', {
+let select = new Select('.js-select', {
 
 
   placeholder: 'Sattelites of Uranus*' // optional

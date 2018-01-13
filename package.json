@@ -66,6 +66,7 @@
     "lodash": "^4.3.0"
   },
   "dependencies": {
-    "nouislider": "^10.1.0"
+    "nouislider": "^10.1.0",
+    "svg4everybody": "^2.1.9"
   }
 }

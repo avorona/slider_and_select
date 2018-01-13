@@ -1,45 +1,31 @@
-
-
-
 export default class Range {
-  
+
   constructor(settings) {
-
-    this.config=settings; 
-
-    
+    this.config = settings;
     this._init();
-  
-
   }
-
-
 
   _init() {
     this._createLabels();
   }
 
-
-
   setProgress(value) {
 
-    let ruller= document.querySelector(this.config.customRange);
+    const ruller = document.querySelector(this.config.customRange);
+    const rullerStrokes = [...(ruller.children[0].children)];
+    const l = rullerStrokes.length;
 
-    let rullerStrokes=[].slice.call(ruller.children[0].children);
-    let l = rullerStrokes.length;
-    // console.log(value, ruller, rullerStrokes);
 
-    let position = Math.floor(l/(this.config.max - this.config.min)*value);
-    if (position >= rullerStrokes.length) { position=rullerStrokes.length-1;}
-
-    // console.log(position);
+    let position = Math.floor(l / (this.config.max - this.config.min) * value);
+    if (position >= rullerStrokes.length) {
+      position = rullerStrokes.length - 1;
+    }
 
     let current = rullerStrokes[position];
-   
-    current.style.fill ='#C55C4B';
+
+    current.style.fill = '#C55C4B';
 
     this._fillPrevSiblings(current);
-
     this._fillNextSiblings(current);
 
   }
@@ -47,48 +33,40 @@ export default class Range {
 
   _fillPrevSiblings(el, filter) {
 
-   
-    var siblings = [];
-    while (el = el.previousElementSibling) { if (!filter || filter(el)) siblings.push(el); }
+    const siblings = [];
+    while (el = el.previousElementSibling) {
+      if (!filter || filter(el)) siblings.push(el);
+    }
 
     siblings.forEach(e => {
-      // console.log(e);
       e.style.fill = '#C55C4B';
-
     });
-   
 
-
-  } 
+  }
 
   _fillNextSiblings(el, filter) {
 
- 
-    var siblings = [];
-    while (el = el.nextElementSibling) { if (!filter || filter(el)) siblings.push(el); }
-    
+    const siblings = [];
+    while (el = el.nextElementSibling) {
+      if (!filter || filter(el)) siblings.push(el);
+    }
 
     siblings.forEach(e => {
-      e.style.fill ='#FFFFFF';
+      e.style.fill = '#FFFFFF';
     });
-  
+
 
   }
-
 
   _createLabels() {
 
-    let minLabel=document.querySelector('.js-label-min');
-    let maxLabel=document.querySelector('.js-label-max');
-    // let wrap = document.querySelector('.label-wrap');
+    let minLabel = document.querySelector('.js-label-min');
+    let maxLabel = document.querySelector('.js-label-max');
 
-    // console.log(this.config.min, this.config.max);
-    minLabel.innerHTML=this.config.min;
-    maxLabel.innerHTML=this.config.max;
-
+    minLabel.innerHTML = this.config.min;
+    maxLabel.innerHTML = this.config.max;
 
   }
 
-  
 
 }
